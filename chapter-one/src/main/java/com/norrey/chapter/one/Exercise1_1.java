@@ -26,6 +26,7 @@ public class Exercise1_1 {
      * arrayList Print the contents of the arraylist in reverse order.
      *
      * @param file
+     * @throws java.io.IOException
      */
     public void partOne(@Nonnull final File file) throws IOException {
         requireNonNull(file, " The file must not be null");
