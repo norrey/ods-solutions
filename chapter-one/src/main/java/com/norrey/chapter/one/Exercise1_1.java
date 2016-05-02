@@ -27,7 +27,7 @@ public class Exercise1_1 {
      *
      * @param file
      */
-    private void partOne(@Nonnull final File file) throws IOException {
+    public void partOne(@Nonnull final File file) throws IOException {
         requireNonNull(file, " The file must not be null");
 
         final List<String> lineList = ImmutableList.of();
