@@ -5,9 +5,13 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
+import java.util.Collections;
 import java.util.List;
 import java.util.logging.Logger;
 import java.util.stream.Stream;
+import javax.annotation.Nonnull;
+
+import static java.util.Objects.requireNonNull;
 
 /**
  *
@@ -23,16 +27,16 @@ public class Exercise1_1 {
      *
      * @param file
      */
-    private void partOne(final File file) throws IOException {
+    private void partOne(@Nonnull final File file) throws IOException {
+        requireNonNull(file, " The file must not be null");
+
         final List<String> lineList = ImmutableList.of();
-        try (Stream<String> lines = Files.lines(file.toPath(), Charset.defaultCharset())) {
+        try (final Stream<String> lines = Files.lines(file.toPath(), Charset.defaultCharset())) {
             lines.forEachOrdered(lineList::add);
         }
 
-        for (int i = lineList.size() - 1; i >= 0; i--) {
-            System.out.println(lineList.get(i));
-        }
-
+        Collections.reverse(lineList);
+        lineList.stream().forEach(System.out::println);
     }
 
 }
