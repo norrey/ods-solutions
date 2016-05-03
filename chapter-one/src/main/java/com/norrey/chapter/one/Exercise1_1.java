@@ -9,11 +9,11 @@ import java.util.ArrayDeque;
 import java.util.Collections;
 import java.util.List;
 import java.util.logging.Logger;
+import java.util.Scanner;
 import java.util.stream.Stream;
 import javax.annotation.Nonnull;
 
 import static java.util.Objects.requireNonNull;
-import java.util.Scanner;
 
 /**
  *
@@ -64,6 +64,11 @@ public class Exercise1_1 {
 
     }
 
+    /**
+     * 
+     * @param file
+     * @throws IOException 
+     */
     public void partThree(@Nonnull final File file) throws IOException {
         final ArrayDeque<String> lineList = new ArrayDeque<>();
         int lineNumber = 0;
