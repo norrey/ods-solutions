@@ -64,4 +64,27 @@ public class Exercise1_1 {
 
     }
 
+    public void partThree(@Nonnull final File file) throws IOException {
+        final ArrayDeque<String> lineList = new ArrayDeque<>();
+        int lineNumber = 0;
+        final Scanner scanner = new Scanner(file);
+        while (scanner.hasNextLine()) {
+            if (lineNumber < 42) {
+                lineList.add(scanner.nextLine());
+                lineNumber++;
+            } else {
+                final String possibleEmpty = scanner.nextLine();
+                if (possibleEmpty.isEmpty()) {
+                    System.out.println(lineList.poll());
+                    lineList.add(possibleEmpty);
+                } else {
+                    lineList.remove();
+                    lineList.add(possibleEmpty);
+                }
+
+            }
+
+        }
+    }
+
 }
