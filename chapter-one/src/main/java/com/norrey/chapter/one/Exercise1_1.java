@@ -48,6 +48,8 @@ public class Exercise1_1 {
      * @throws IOException
      */
     public void partTwo(@Nonnull final File file) throws IOException {
+        requireNonNull(file, " The file must not be null");
+
         final List<String> lineList = ImmutableList.of();
         int lineNumber = 0;
         final Scanner scanner = new Scanner(file);
@@ -65,11 +67,13 @@ public class Exercise1_1 {
     }
 
     /**
-     * 
+     *
      * @param file
-     * @throws IOException 
+     * @throws IOException
      */
     public void partThree(@Nonnull final File file) throws IOException {
+        requireNonNull(file, " The file must not be null");
+
         final ArrayDeque<String> lineList = new ArrayDeque<>();
         int lineNumber = 0;
         final Scanner scanner = new Scanner(file);
@@ -90,6 +94,29 @@ public class Exercise1_1 {
             }
 
         }
+    }
+
+    /**
+     * Write unique lines only
+     *
+     * @param file
+     * @throws IOException
+     */
+    public void partFour(@Nonnull final File file) throws IOException {
+        requireNonNull(file, " The file must not be null");
+
+        final List<String> lineList = ImmutableList.of();
+        final Scanner scanner = new Scanner(file);
+        while (scanner.hasNextLine()) {
+            final String possibleDuplicate = scanner.nextLine();
+
+            lineList.stream().filter((prev) -> (!prev.equals(possibleDuplicate))).forEach((prev) -> {
+                lineList.add(possibleDuplicate);
+                System.out.println(prev);
+            });
+
+        }
+
     }
 
 }
