@@ -7,6 +7,7 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.util.ArrayDeque;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.logging.Logger;
 import java.util.Scanner;
@@ -139,6 +140,56 @@ public class Exercise1_1 {
             });
             lineList.add(possibleDuplicate);
 
+        }
+
+    }
+
+    /**
+     * Read the entire input one line at a time. Then output all line sorted by
+     * length with the shortest lines first. In the case where two lines have
+     * the same length, resolve their order using the usual "sorted order".
+     * Duplicate lines should be printed only once.
+     *
+     * @param file
+     * @throws IOException
+     */
+    public void partSix(@Nonnull final File file) throws IOException {
+        requireNonNull(file, " The file must not be null");
+
+        final List<String> lineList = ImmutableList.of();
+        final Scanner scanner = new Scanner(file);
+        while (scanner.hasNextLine()) {
+            final String stringLine = scanner.nextLine();
+            lineList.stream().filter((prev) -> (prev.equals(stringLine))).forEach(lineList::remove);
+            lineList.add(stringLine);
+
+        }
+
+        lineList.sort(new StringLengthComparator());
+        lineList.stream().forEach(System.out::println);
+
+    }
+
+    public void partSeven(@Nonnull final File file) throws IOException {
+        requireNonNull(file, " The file must not be null");
+
+        final List<String> lineList = ImmutableList.of();
+        final Scanner scanner = new Scanner(file);
+        while (scanner.hasNextLine()) {
+            final String stringLine = scanner.nextLine();
+            lineList.add(stringLine);
+        }
+
+        lineList.sort(new StringLengthComparator());
+        lineList.stream().forEach(System.out::println);
+
+    }
+
+    private class StringLengthComparator implements Comparator<String> {
+
+        @Override
+        public int compare(final String string1, final String string2) {
+            return string1.length() - string2.length();
         }
 
     }
