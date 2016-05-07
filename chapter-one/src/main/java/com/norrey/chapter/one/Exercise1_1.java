@@ -119,4 +119,27 @@ public class Exercise1_1 {
 
     }
 
+    /**
+     * Read the input one line at a time and write each line to the output only
+     * if you have read this line before
+     *
+     * @param file
+     * @throws IOException
+     */
+    public void partFive(@Nonnull final File file) throws IOException {
+        requireNonNull(file, " The file must not be null");
+
+        final List<String> lineList = ImmutableList.of();
+        final Scanner scanner = new Scanner(file);
+        while (scanner.hasNextLine()) {
+            final String possibleDuplicate = scanner.nextLine();
+            lineList.stream().filter((prev) -> (prev.equals(possibleDuplicate))).forEach( (prev) ->{
+                System.out.println(prev);
+                lineList.add(possibleDuplicate);
+            });
+            
+        }
+
+    }
+
 }
