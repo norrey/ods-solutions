@@ -25,8 +25,9 @@ public class Exercise1_1 {
     private static final Logger LOGGER = Logger.getLogger(Exercise1_1.class.getName());
 
     /**
-     * Read all lines from a file using a stream and store the contents in an
-     * arrayList Print the contents of the arraylist in reverse order.
+     * Read the input one line at a time and then write the lines out in reverse
+     * order, so that the last input line is printed first, then the second last
+     * input line, and so on.
      *
      * @param file
      * @throws java.io.IOException
@@ -44,6 +45,8 @@ public class Exercise1_1 {
     }
 
     /**
+     * Read the first 50 lines of the input and then write them out in reverse
+     * order. Read the next 50 lines and then write them out in reverse order.
      *
      * @param file
      * @throws IOException
@@ -68,7 +71,8 @@ public class Exercise1_1 {
     }
 
     /**
-     *
+     * Read the input one line at a time. At any point after reading the first 42 lines,
+     * if some line is blank, then output the line that occured 42 lines prior to that one.
      * @param file
      * @throws IOException
      */
@@ -98,7 +102,8 @@ public class Exercise1_1 {
     }
 
     /**
-     * Write unique lines only
+     *  Read the input one line at a time and write each line to the output if
+     * it is not a duplicate of some previous input line.
      *
      * @param file
      * @throws IOException
@@ -170,6 +175,15 @@ public class Exercise1_1 {
 
     }
 
+    /**
+     * Read the entire input one line at a time. Then output all line sorted by
+     * length with the shortest lines first. In the case where two lines have
+     * the same length, resolve their order using the usual "sorted order".
+     * Duplicate lines should be printed the same number of times as the input.
+     *
+     * @param file
+     * @throws IOException
+     */
     public void partSeven(@Nonnull final File file) throws IOException {
         requireNonNull(file, " The file must not be null");
 
