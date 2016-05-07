@@ -133,11 +133,12 @@ public class Exercise1_1 {
         final Scanner scanner = new Scanner(file);
         while (scanner.hasNextLine()) {
             final String possibleDuplicate = scanner.nextLine();
-            lineList.stream().filter((prev) -> (prev.equals(possibleDuplicate))).forEach( (prev) ->{
+            lineList.stream().filter((prev) -> (prev.equals(possibleDuplicate))).forEach((prev) -> {
+                lineList.remove(possibleDuplicate);
                 System.out.println(prev);
-                lineList.add(possibleDuplicate);
             });
-            
+            lineList.add(possibleDuplicate);
+
         }
 
     }
