@@ -120,7 +120,7 @@ public class Exercise1_1 {
         while (scanner.hasNextLine()) {
             final String possibleDuplicate = scanner.nextLine();
             boolean added = lineSet.add(possibleDuplicate);
-            if (!added) {
+            if (added) {
                 System.out.println(possibleDuplicate);
             }
 
@@ -138,15 +138,14 @@ public class Exercise1_1 {
     public void partFive(@Nonnull final File file) throws IOException {
         requireNonNull(file, " The file must not be null");
 
-        final List<String> lineList = ImmutableList.of();
+        final Set<String> lineSet = new HashSet<>();
         final Scanner scanner = new Scanner(file);
         while (scanner.hasNextLine()) {
             final String possibleDuplicate = scanner.nextLine();
-            lineList.stream().filter((prev) -> (prev.equals(possibleDuplicate))).forEach((prev) -> {
-                lineList.remove(possibleDuplicate);
-                System.out.println(prev);
-            });
-            lineList.add(possibleDuplicate);
+            boolean added = lineSet.add(possibleDuplicate);
+            if (!added) {
+                System.out.println(possibleDuplicate);
+            }
 
         }
 
@@ -216,6 +215,29 @@ public class Exercise1_1 {
             final String stringLine = scanner.nextLine();
             lineList.add(stringLine);
         }
+    }
+
+    /**
+     * Read the entire input one line at a time and randomly permute the lines
+     * before outputting them.
+     *
+     * @param file
+     * @throws IOException
+     */
+    public void partNine(@Nonnull final File file) throws IOException {
+        requireNonNull(file, "The file must not be null");
+        final List<String> lineList = ImmutableList.of();
+        try (final Stream<String> lines = Files.lines(file.toPath(), Charset.defaultCharset())) {
+            /*
+             * This will not be read in order
+             */
+            lines.forEach(lineList::add);
+        }
+        /*
+         * This shuffles the list randomly
+         */
+        Collections.shuffle(lineList);
+        lineList.stream().forEach(System.out::println);
     }
 
     private class StringLengthComparator implements Comparator<String> {
