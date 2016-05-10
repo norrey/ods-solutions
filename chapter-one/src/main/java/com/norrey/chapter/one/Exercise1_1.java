@@ -8,9 +8,11 @@ import java.nio.file.Files;
 import java.util.ArrayDeque;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
 import java.util.logging.Logger;
 import java.util.Scanner;
+import java.util.Set;
 import java.util.stream.Stream;
 import javax.annotation.Nonnull;
 
@@ -71,8 +73,10 @@ public class Exercise1_1 {
     }
 
     /**
-     * Read the input one line at a time. At any point after reading the first 42 lines,
-     * if some line is blank, then output the line that occured 42 lines prior to that one.
+     * Read the input one line at a time. At any point after reading the first
+     * 42 lines, if some line is blank, then output the line that occured 42
+     * lines prior to that one.
+     *
      * @param file
      * @throws IOException
      */
@@ -102,8 +106,8 @@ public class Exercise1_1 {
     }
 
     /**
-     *  Read the input one line at a time and write each line to the output if
-     * it is not a duplicate of some previous input line.
+     * Read the input one line at a time and write each line to the output if it
+     * is not a duplicate of some previous input line.
      *
      * @param file
      * @throws IOException
@@ -111,15 +115,14 @@ public class Exercise1_1 {
     public void partFour(@Nonnull final File file) throws IOException {
         requireNonNull(file, " The file must not be null");
 
-        final List<String> lineList = ImmutableList.of();
+        final Set<String> lineSet = new HashSet<>();
         final Scanner scanner = new Scanner(file);
         while (scanner.hasNextLine()) {
             final String possibleDuplicate = scanner.nextLine();
-
-            lineList.stream().filter((prev) -> (!prev.equals(possibleDuplicate))).forEach((prev) -> {
-                lineList.add(possibleDuplicate);
-                System.out.println(prev);
-            });
+            boolean added = lineSet.add(possibleDuplicate);
+            if (!added) {
+                System.out.println(possibleDuplicate);
+            }
 
         }
 
@@ -197,6 +200,22 @@ public class Exercise1_1 {
         lineList.sort(new StringLengthComparator());
         lineList.stream().forEach(System.out::println);
 
+    }
+
+    /**
+     *
+     * @param file
+     * @throws IOException
+     */
+    public void partEight(@Nonnull final File file) throws IOException {
+        requireNonNull(file, " The file must not be null");
+
+        final List<String> lineList = ImmutableList.of();
+        final Scanner scanner = new Scanner(file);
+        while (scanner.hasNextLine()) {
+            final String stringLine = scanner.nextLine();
+            lineList.add(stringLine);
+        }
     }
 
     private class StringLengthComparator implements Comparator<String> {
