@@ -20,7 +20,7 @@ import static java.util.Objects.requireNonNull;
 
 /**
  *
- * @author Norrey Okumu
+ * @author Norrey Okumu <okumu.norrey@gmail.com>
  */
 public class Exercise1_1 {
 
