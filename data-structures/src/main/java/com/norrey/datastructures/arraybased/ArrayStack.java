@@ -63,8 +63,8 @@ public class ArrayStack<T> {
     }
 
     /**
-     * Remove the element at index i. Ignoring the call to resize this
-     * operation runs in O(n-i)
+     * Remove the element at index i. Ignoring the call to resize this operation
+     * runs in O(n-i)
      *
      * @param i
      * @return
