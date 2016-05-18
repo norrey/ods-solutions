@@ -8,6 +8,7 @@
     <modules>
         <module>chapter-one</module>
         <module>chapter-two</module>
+        <module>data-structures</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
