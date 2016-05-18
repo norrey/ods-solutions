@@ -44,7 +44,7 @@ public class ArrayStack<T> {
     }
 
     /**
-     * Add an element x to the array. Neglecting the call to resize, this
+     * Add an element x to the array. Ignoring the call to resize, this
      * operation runs in O(n-i)
      *
      * @param i
@@ -63,7 +63,7 @@ public class ArrayStack<T> {
     }
 
     /**
-     * Remove the element at index i. Neglecting the call to resize this
+     * Remove the element at index i. Ignoring the call to resize this
      * operation runs in O(n-i)
      *
      * @param i
@@ -81,6 +81,10 @@ public class ArrayStack<T> {
         return x;
     }
 
+    /**
+     * Resizes the array by creating a larger array and copying the contents of
+     * the existing into the new array then assigns the new to the old array
+     */
     @SuppressWarnings("ManualArrayToCollectionCopy")
     void resize() {
         T[] b = (T[]) new Object[Math.max(2 * n, 1)];
