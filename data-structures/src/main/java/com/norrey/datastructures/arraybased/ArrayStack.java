@@ -12,6 +12,14 @@ public class ArrayStack<T> {
     int n;
 
     /**
+     * Initialize this ArrayStack with size 10 and zero elements
+     */
+    public ArrayStack() {
+        a = (T[]) new Object[10];
+        n = 0;
+    }
+
+    /**
      * Returns the size of this array stack
      *
      * @return
