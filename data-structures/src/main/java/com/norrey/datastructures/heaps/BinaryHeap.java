@@ -11,8 +11,12 @@ public class BinaryHeap<T extends Comparable<? super T>> {
     int n;
 
     public BinaryHeap() {
-        a = (T[]) new Object[10];
+        a = (T[]) new Comparable[10];
         n = 0;
+    }
+
+    int size() {
+        return n;
     }
 
     int left(int i) {
@@ -110,7 +114,7 @@ public class BinaryHeap<T extends Comparable<? super T>> {
      * Resize the array
      */
     void resize() {
-        T[] y = (T[]) new Object[Math.max(2 * n, 1)];
+        T[] y = (T[]) new Comparable[Math.max(2 * n, 1)];
         for (int i = 0; i < n; i++) {
             y[i] = a[i];
         }
