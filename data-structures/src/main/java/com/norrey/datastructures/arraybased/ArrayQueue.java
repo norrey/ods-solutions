@@ -9,13 +9,13 @@ package com.norrey.datastructures.arraybased;
  *
  * @author Norrey Okumu <okumu.norrey@gmail.com>
  */
-public class ArrayDeque<T> {
+public class ArrayQueue<T> {
 
     private T[] backingArray;
     int j; // index (keeps track of the next element to remove)
     int n; // tracks the number of elements
 
-    public ArrayDeque() {
+    public ArrayQueue() {
         backingArray = (T[]) new Object[10];
         n = 0;
         j = 0;
