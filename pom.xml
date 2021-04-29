@@ -10,6 +10,7 @@
         <module>chapter-two</module>
         <module>data-structures</module>
         <module>algorithms</module>
+        <module>interview</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
